@@ -1,7 +1,7 @@
 ## code to prepare sample datasets goes here
 
 sample_keto_data <- readr::read_csv(system.file("extdata",
-                                                package = "healthR",
+                                                package = "qselfr",
                                                 "KetoMojoSample.csv"),
                                     col_types=cols(
                                       source = col_character(),
