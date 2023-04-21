@@ -23,11 +23,12 @@ inside_tracker_df <- function(filename = system.file("extdata",
   names(labs_all)[1] <- "Date"
   labs_all$Date <- parse_date(labs_all$Date, format = "%b %d %Y")
 
-
-  # final dataframe, "labs", has everything in a nice table.
   labs <- cbind(Date = labs_all$Date,
-                apply(labs_all[-1],2,function(x) as.numeric(unlist(x))) %>% unlist() %>% as.data.frame()) %>%
-    arrange(desc(Date)) %>% as_tibble()
+                apply(labs_all[-1], 2, function(x) {
+                  if (is.numeric(x)) as.numeric(x) else x
+                }) %>% as.data.frame()) %>%
+    arrange(desc(Date))
+
 
   return(labs)
 }

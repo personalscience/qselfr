@@ -8,7 +8,7 @@ QSelfr is a collection of useful self-tracking functions.
 
 ## Installation
 
-You can install the released version of qselfr from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of qselfr from Github with:
 
 ``` r
 devtools::install_github("personalscience/qselfr")
@@ -20,7 +20,8 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(qselfr)
-qselfr::inside_tracker()
+my_blood_file_csv <- "path/to/file.csv"
+qselfr::inside_tracker_df()
 
 ```
 
