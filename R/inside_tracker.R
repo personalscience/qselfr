@@ -23,10 +23,12 @@ inside_tracker_df <- function(filename = system.file("extdata",
   names(labs_all)[1] <- "Date"
   labs_all$Date <- parse_date(labs_all$Date, format = "%b %d %Y")
 
-  labs <- cbind(Date = labs_all$Date,
-                apply(labs_all[-1], 2, function(x) {
-                  if (is.numeric(x)) as.numeric(x) else x
-                }) %>% as.data.frame()) %>%
+
+
+  labs <-
+
+    labs_all  %>% select(-c("Neutrophils (cells/µL)", "Lymphocytes (cells/µL)")) %>%
+    mutate(across(-Date, ~ replace(., . == "-", NA) %>% as.numeric())) %>%
     arrange(desc(Date))
 
 
